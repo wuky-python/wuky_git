@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--v-model只能用于表单控件-->
+<!--v-model用来绑定标签元素值与vue实例中的data的数据保持一致，从而可以实现数据的双向绑定-->
+<div id="app">
+    <input type="text" v-model="msg">
+    <h3>{{msg}}</h3>
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:''
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--总结
+1.使用v-model可以实现数据与页面的双向绑定
+2.所谓双向绑定：
+表单中的数据发生变化导致vue实例中data数据发生了变化
+vue实例中data数据的变化也会影响到页面中数据的显示-->
+
+<!--mvvm架构
+model：数据 vue绑定的数据
+vm：viewmodel 监听器
+view：页面 页面展示的数据-->

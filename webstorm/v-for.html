@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+<span v-for="(key,value,index) in user">{{key}}{{value}}{{index}}</span>
+<span v-for="key in user">{{key}}</span>
+    <ul v-for="(i,index) in arr">
+        <li>{{index+1}}:{{i}}</li>
+    </ul>
+    <ul v-for="(i,index) in users" :key="index">
+        <li>{{index}}{{i.name}}</li>
+    </ul>
+
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            user: {name: "小黑", age: 23, pwd: "123456"},
+            arr: ["四川", "北京", "山西"],
+            users: [{name: "小黑", age: 13, pwd: "123456"},
+                {name: "小张", age: 23, pwd: "123456"},
+                {name: "小波", age: 63, pwd: "123456"},
+            ]
+        },
+    })
+</script>
+</body>
+</html>
+<!--在使用v-for的时候一定注意加上 :key 用来给vue内部提供重用的排序的唯一key-->

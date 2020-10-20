@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+<!--
+1.页面提供点击按钮
+2.给按钮绑定一个事件
+3.再单击事件触发的方法来修改年龄的值并渲染到页面上
+-->
+<h3>年龄：{{age}}</h3>
+<!--v-on:事件名=”你在methods中i定义好的方法的名称“-->
+    <input type="button" value="点我长大" v-on:click="add_age">
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            age:18
+        },
+        methods:{
+            //年龄增长的方法
+            add_age:function () {
+                //获取data中的age值并增长
+                //在事件方法中可以通过this来获取当前vue实例中所包含的属性
+                this.age++
+
+            }
+        }
+    })
+</script>
+</body>
+</html>
+<!--
+总结:
+1.在vue中事件的绑定是通过v-on指令来完成的，v-on：事件名=”方法名“
+2.v-on:事件名=‘函数名’赋值语句就是当前事件要触发的方法
+3.在vue中事件对应的方法同意定义在vue实例中的methods属性中
+4.在vue定义的事件中，this代表当前vue实例，你可以通过this获取到vue实例相关的数据
+-->

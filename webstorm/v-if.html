@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--v-if 用来控制页面元素的条件 v-else必须跟在v-if元素后面否则无法识别-->
+
+<div id="app">
+<h3 v-if="false">KKKKKKKKKKKKKKKKKKK</h3>
+<h3 v-else-if="false">ssssssssssss</h3>
+    <h3 v-else>else</h3>
+
+
+
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

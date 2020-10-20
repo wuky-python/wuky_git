@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--v-show用来控制页面中的某个标签是否展示标签是否展示-->
+
+<div id="app">
+<h3 v-show="false">{{msg}}</h3>
+    <br>
+    <h3 v-show="isShow">{{msg}}</h3>
+    <br>
+    <input v-show="isShow" value="点击控制是否展示" @click="showmsg">
+    <br>
+    <span v-show="count>=30">柏芝教育</span>
+    <input type="button" value="点我" @click="change_count">
+    <input type="button" value="点我" @click="add_count">
+
+
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:"上课一定好好听~~",m
+            isShow: true,
+            count: 30,
+        },
+        methods: {
+            showsg() {
+                this.isShow = !this.isShow;
+            },
+            change_count() {
+                this.count--;
+            },
+            add_count(){
+                this.count++;
+            },
+        },
+    })
+</script>
+</body>
+</html>

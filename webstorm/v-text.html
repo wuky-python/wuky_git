@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--v-text：用来获取data中定义的数据并且将数据以文本的形式渲染到指定标签的内部-->
+<div id="app">
+<!--    v-text=”data中定义好的变量“ 会覆盖标签中原有的值-->
+    <span v-text="msg">大家是非常优秀的大学生</span>
+    <br>
+    <span>大家是非常优秀的大学生</span>
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:"柏芝教育欢迎大家",
+        },
+    })
+</script>
+</body>
+</html>
+<!--v-text与{{}}插值表达式都是用来过去data中的数据二者的区别在于：
+1.使用v-text会覆盖标签内部原有的值，插值表达式不会覆盖，与原有的值进行拼接
+2.在网络较慢的情况下，v-text会出现插值闪烁的情况-->
