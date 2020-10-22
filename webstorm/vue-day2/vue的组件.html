@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--组件的作用：用来减少vue实例中的代码量，日后再开发过程中可以将一些重复的代码已组件形式进行封装-->
+<!--组建的概念：
+1.组件：一个组件就是html css js的独立的集合体，可以完成前端页面代码的复用
+2.组件可以分为根组件，全局组件 局部组件-->
+
+
+<!--全局组件
+全局组件是将定义好的直接注册给vue实例，以后再任意vue的范围内使用组件都可以生效-->
+<div id="app">
+    <com></com>
+    <com></com>
+    <com></com>
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    //1.组件的定义 组件就是一个普通的js对象
+    let com = {
+        //html页面
+        template:`<div>这是我的第一个组件</div>`,
+    }
+
+    //2.全局组件的注册 全局注册 局部注册
+    //全局组件的注册：Vue.component("组件注册后的名称"，“组件对象”)
+    Vue.component("com",com)
+
+    new Vue({
+        el: "#app",
+        data: {},
+    })
+</script>
+</body>
+</html>

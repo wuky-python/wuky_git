@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--在回调函数中是用箭头函数不会改变原有的this指向-->
+
+<div id="app">
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+
+    let user = {
+        username:"小黑",
+        app:function () {
+            console.log(this.username)
+        }
+    }
+    user.app()
+    let student = {
+        username:"小黄",
+        app:function (){
+            //在回调函数中this的指向会被改变，不在指向当前的sthudent实例
+            setTimeout(function () {
+                // 获取不到this对象了  已经被改变了
+                console.log(this.username)
+            })
+        }}
+        student.app()
+        let emp = {
+            username:"小率",
+            //回调函数中this的之会被改变
+            app:function(){
+                //在回调函数中是用箭头不会改变this的指向
+                setTimeout(()=>console.log(this.username))
+            }
+
+    }
+    emp.app()
+
+
+    new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+
+
+</body>
+</html>

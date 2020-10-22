@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--所谓动态路由传参，就是将参数作为路由的一部分传递-->
+
+<div id="app">
+
+    <router-view></router-view>
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script src="../vue-router.3.0.1.js"></script>
+<script>
+    let first = {
+        template:`<div>这是组件1
+                    <router-link to="/second/3/tom">查看组件2的这一页</router-link>
+</div>`,
+    }
+    let second={
+        template: `<div>这是组件2：接受组件1穿的id：{{$route.params.id}}  {{$route.params.name}}</div>`,
+    }
+
+    let myrouter = new VueRouter({
+        routes:[
+            {path:"/first",component:first},
+            {path: "/second/:id/:name", component: second},
+            {path: "/", redirect: "/first"},
+        ]
+    })
+
+
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        router:myrouter,
+    })
+</script>
+</body>
+</html>
+<!--总结
+1.动态路由传参需要将参数包含在路径中
+2.在定义路由时要按位置匹配好参数 <router-link to="/second/1/tom"> 需要与你的路由地址一一匹配
+3.参数需要使用{{$route.params.参数名}}接收-->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--query拼接传参
+在通过<router-lint to="路径地址">发起访问请求时，可以在路径后通过？拼接的形式传递参数
+拼接参数的形式需要在对应的组件颞部通过{{$route.query.参数名}}获取-->
+
+<div id="app">
+
+    <router-view></router-view>
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script src="../vue-router.3.0.1.js"></script>
+<script>
+    let first = {
+        template:`<div>这是组件1
+                    <router-link to="/second?id=3&name=tom">查看组件2的这一页</router-link>
+</div>`,
+    }
+    let second={
+        template: `<div>这是组件2：接受组件1穿的id：{{$route.query.id}}  {{$route.query.name}}</div>`,
+    }
+
+    let myrouter = new VueRouter({
+        routes:[
+            {path:"/first",component:first},
+            {path: "/second", component: second},
+            {path: "/", redirect: "/first"},
+        ]
+    })
+
+
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        router:myrouter,
+    })
+</script>
+</body>
+</html>

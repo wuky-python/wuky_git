@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--一个变量的值依赖于多个变量，且依赖的任意一个变量发生改变，则该变量都会变化-->
+
+<div id="app">
+
+    <input type="number" v-model="shi" max="9" min="0">
+    <input type="number" v-model="ge" max="9" min="0">
+    结果：<b>{{result}}</b>
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            ge:0,
+            shi:0,
+        },
+        computed:{
+            result(){
+                return this.shi*10 + +this.ge
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--总结：
+1.computed用来声明方法属性
+2.声明的方法属性不能再data中重复定义
+3.定义的方法属性必须在页面中渲染使用才生效，才会对内部变量进行监听-->

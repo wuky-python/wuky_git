@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--computed中声明的是方法属性，不可与data的变量重复-->
+<div id="app">
+<!--多个变量的显示依赖于一个变量的变化-->
+    <input type="number" max="100" min="0" v-model="num">
+    <p>十位:{{shi}}</p>
+    <p>个位:{{ge}}</p>
+
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            num:0,
+        },
+        computed:{
+            ge(){
+                return this.num % 10
+            },
+            shi(){
+                return Math.floor(this.num / 10)
+            }
+        }
+    })
+</script>
+</body>
+</html>

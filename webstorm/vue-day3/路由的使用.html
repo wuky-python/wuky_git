@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--vue路由
+vue的页面是有多个组件组成的，一个vue项目只需要一张html页面，而页面中不同部分的展示其实就是通过vue的路由来切换不同的组件-->
+
+
+<div id="app">
+    <h3>这是主页的页头</h3>
+    <hr>
+<!--    定义路由访问不同组建的链接，通过to="/路由地址"来指定当当前标签要访问的组件-->
+    <router-link to="/first">访问系统首页</router-link>
+    <router-link to="/second">访问用户页</router-link>
+
+    <router-view></router-view>
+</div>
+
+
+
+<script src="../vue.js"></script>
+<script src="../vue-router.3.0.1.js"></script>
+<script>
+    let first = {
+        template:`<div>柏芝教育管理系统</div>`,
+    }
+
+    let second = {
+        template: `<div>学生管理</div>`,
+    }
+
+    //为每个组件准备对应的路由 定义组件与路由的映射关系
+    //页面中输入路由来显示对应的组件
+    //需要将定义好的路由注入到当前vue实例中
+    let myrouter = new VueRouter({
+        routes:[
+            //path指的是访问组件的地址，component代表对应的组件 一一对应
+            {path:'/first',component:first},
+            {path:'/second',component:second},
+        ]
+    })
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        //注入定义好的路由
+        //通过route配置参数注入，从而整个vue实例都拥有路由功能
+        router:myrouter
+    })
+</script>
+</body>
+</html>
+
+<!--总结：
+1.需要为每个组件通过一一对应的方式来建立路由映射 new VueRouter
+2.需要将定义好的路由映射注入到vue实例当中，router：变量名
+3.需要在hi指定的位置使用 router-view来选择组件展示的位置
+4.可以通过router-link来发起访问不同组件的路由-->
